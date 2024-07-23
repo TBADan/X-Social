@@ -4,10 +4,7 @@ import UserCard from "@/components/shared/userCard";
 import { useGetRecentPost, useGetUsers } from "@/lib/react-query/queriesAndMutations";
 import { Models } from "appwrite";
 
-const isPostLoading = true;
-const posts = null;
-const isUsersLoading = true;
-const users = null;
+
 
 const Home = () => {
   ///declaring the hooks for getting the data

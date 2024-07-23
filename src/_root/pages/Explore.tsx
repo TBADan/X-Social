@@ -6,15 +6,6 @@ import useDebounce from '@/hooks/useDebounce'
 import { useGetPosts, useSearchPosts } from '@/lib/react-query/queriesAndMutations'
 import React, { useState, useEffect } from 'react'
 import { useInView } from "react-intersection-observer"
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
 
 
 
@@ -30,7 +21,7 @@ const Explore = () => {
   useEffect(() =>{
     if(inView && !searchValue) fetchNextPage();
 
-  }, [inView, searchValue])
+  }, [inView, searchValue]);
 
 
   if(!posts) {
@@ -68,19 +59,6 @@ const Explore = () => {
       </div>
       <div className="flex-between w-full max-w-5xl mt-16 mb-7">
         <h3 className="body-bold md:h3-bold">Popular Today</h3>
-        <div className="flex-center gap-3 bg-dark-3 rounded-xl px-4 py-2 cursor-pointer">
-          <Select onValueChange={(value) => setSearchValue}>
-            <SelectTrigger className="w-[200px] bg-black">
-              <SelectValue placeholder="Search by Topic Tag" />
-            </SelectTrigger>
-            <SelectContent className="bg-dark-3">
-            <SelectItem value="Art" className="bg-dark-3 hover:bg-primary-500">Art</SelectItem>
-            <SelectItem value="Culture" className="bg-dark-3 hover:bg-primary-500">Culture</SelectItem>
-            <SelectItem value="Design" className="bg-dark-3 hover:bg-primary-500">Design</SelectItem>
-            </SelectContent>
-            
-        </Select>
-        </div>
       </div>
       <div className="flex flex-wrap gap-9 w-full max-w-5xl">
         {shouldShowSearchResults ? (

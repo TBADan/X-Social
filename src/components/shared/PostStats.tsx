@@ -7,7 +7,7 @@ import React, { useState, useEffect } from 'react';
 type PostStatsProps = {
   post: Models.Document;
   userId: string;
-}
+};
 
 const PostStats = ({ post, userId} : PostStatsProps) => {
   const likesList = post.likes.map(( user: Models.Document) => user.$id)

@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { useUserContext } from '@/context/AuthContext';
 import { useDeletePost, useGetPostById } from '@/lib/react-query/queriesAndMutations'
 import { multiFormatDateString } from '@/lib/utils';
-import { useParams, Link, Navigate, useNavigate } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 
 
 const PostDetails = () => {
@@ -12,11 +12,13 @@ const PostDetails = () => {
   const { id } = useParams()
   const { data: post, isPending } = useGetPostById(id || '');
   const { user } = useUserContext();
+
+  
   const { mutate: deletePost} = useDeletePost;
 
   const handleDeletePost = () => {
     deletePost({ postId: id, imageId: post?.imageId });
-    Navigate(-1);
+    navigate(-1);
   };
 
 
