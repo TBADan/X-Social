@@ -16,7 +16,6 @@ import {
     getInfinitePost,
     getPostById,
     getRecentPosts,
-    getTopCreators,
     getUserById,
     getUsers,
     likePost,
@@ -171,7 +170,6 @@ export const useDeletePost= () =>{
     }
   })
 }
-
 export const useGetPosts = () =>{
   return useInfiniteQuery({
     queryKey: [QUERY_KEYS.GET_INFINITE_POSTS],
@@ -224,8 +222,3 @@ export const useUpdateUser = () => {
     },
   });
 };
-
-export const useDownloadFile = (fileId: string) = {
-  queryFn: () => getFileDownload(fileId)
-
-}
