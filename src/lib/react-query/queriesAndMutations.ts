@@ -12,7 +12,6 @@ import {
     deletePost,
     deleteSavedPost,
     getCurrentUser,
-    getFileDownload,
     getInfinitePost,
     getPostById,
     getRecentPosts,

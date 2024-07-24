@@ -2,25 +2,15 @@ import Loader from '@/components/shared/Loader';
 import PostStats from '@/components/shared/PostStats';
 import { Button } from '@/components/ui/button';
 import { useUserContext } from '@/context/AuthContext';
-import { useDeletePost, useGetPostById } from '@/lib/react-query/queriesAndMutations'
+import { useGetPostById } from '@/lib/react-query/queriesAndMutations'
 import { multiFormatDateString } from '@/lib/utils';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 
 
 const PostDetails = () => {
-  const navigate = useNavigate();
   const { id } = useParams()
   const { data: post, isPending } = useGetPostById(id || '');
   const { user } = useUserContext();
-
-  
-  const { mutate: deletePost} = useDeletePost;
-
-  const handleDeletePost = () => {
-    deletePost({ postId: id, imageId: post?.imageId });
-    navigate(-1);
-  };
-
 
 
   return (
@@ -74,7 +64,6 @@ const PostDetails = () => {
                 </Link>
 
                 <Button
-                  onClick={handleDeletePost}
                   variant="ghost"
                   className={`ost_details-delete_btn ${
                     user.id !== post?.creator.$id && "hidden"
@@ -101,7 +90,7 @@ const PostDetails = () => {
               </ul>
               </div>
               <div className="w-full">
-                <PostStats post={post} userId={user.id}/>
+                {isPending ? null : <PostStats post={post} userId={user.id}/>}
 
               </div>
                 </div>

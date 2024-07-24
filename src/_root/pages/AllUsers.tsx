@@ -11,14 +11,7 @@ const AllUsers = () => {
 
   return (
     <div className="common-container">
-      <div className="flex gap-5 w-full px-3">
-        <img
-        src="/assets/icons/people.svg"
-        alt="people icon"
-        width={35}
-        height={35}
-        className="rounded-full stroke-slate-50"
-        />
+      <div className="user-container">
         <h3 className="h1-bold text-light-1">All Users</h3>
       </div>
     {isUserLoading && !creators ? (
