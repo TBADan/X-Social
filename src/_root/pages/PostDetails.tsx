@@ -9,8 +9,8 @@ import { useParams, Link } from 'react-router-dom';
 
 const PostDetails = () => {
   const { id } = useParams()
-  const { data: post, isPending } = useGetPostById(id || '');
   const { user } = useUserContext();
+  const { data: post, isPending } = useGetPostById(id || '');
 
 
   return (
@@ -91,7 +91,6 @@ const PostDetails = () => {
               </div>
               <div className="w-full">
                 {isPending ? null : <PostStats post={post} userId={user.id}/>}
-
               </div>
                 </div>
             </div>
