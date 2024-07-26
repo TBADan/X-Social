@@ -37,7 +37,7 @@ const PostStats = ({ post, userId }: { post?: Models.Document; userId: string })
       newLikes.push(userId);
     }
     setLikes(newLikes);
-    likePost({postId: post?.$id, likesArray: newLikes })
+    likePost({postId: post.$id, likesArray: newLikes })
   }
 ////saved post handle
   const handleSavePost = (
@@ -48,7 +48,7 @@ const PostStats = ({ post, userId }: { post?: Models.Document; userId: string })
       setIsSaved(false);
       return deleteSavedPost(savedPostRecord.$id);
     }  {
-      savePost({ userId: userId, postId: post?.$id})
+      savePost({ userId: userId, postId: post.$id})
       setIsSaved(true);
     }
   }

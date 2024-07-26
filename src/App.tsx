@@ -8,6 +8,7 @@ import'./globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import AuthLayout from './_auth/AuthLayout';
 import RootLayout from './_root/RootLayout';
+import AIsearch from './components/shared/AI-search';
 
 const App = () => {
   return (
@@ -30,6 +31,9 @@ const App = () => {
           <Route path="/posts/:id" element={<PostDetails />} />
           <Route path="/profile/:id/*" element={<Profile />} />
           <Route path="/update-profile/:id" element={<UpdateProfile />} />
+
+          
+
 
         </Route>
 
