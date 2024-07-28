@@ -14,13 +14,14 @@ const Explore = () => {
   const { data: posts, fetchNextPage, hasNextPage } = useGetPosts();
 
   ///Search Values
-  const [searchValue, setSearchValue] = useState("")
+  const [searchValue, setSearchValue] = useState("");
   const debouncedValue = useDebounce(searchValue, 500);
-  const {data: searchedPosts, isFetching: isSearchFetching} = useSearchPosts(debouncedValue)
-
-  useEffect(() =>{
-    if(inView && !searchValue) fetchNextPage();
-
+  const {data: searchedPosts, isFetching: isSearchFetching} = useSearchPosts(debouncedValue);
+  
+  useEffect(() => {
+    if (inView && !searchValue) {
+      fetchNextPage();
+    }
   }, [inView, searchValue]);
 
 

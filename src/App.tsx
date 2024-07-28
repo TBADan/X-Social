@@ -8,8 +8,6 @@ import'./globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import AuthLayout from './_auth/AuthLayout';
 import RootLayout from './_root/RootLayout';
-import AIsearch from './components/shared/AI-search';
-
 const App = () => {
   return (
     <main className="flex h-screen">
