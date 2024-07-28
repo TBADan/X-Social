@@ -6,7 +6,7 @@ import React, { useState, useEffect } from 'react';
 
 
 
-const PostStats = ({ post, userId }: { post: Models.Document; userId: string }) => {
+const PostStats = ({ post, userId }: { post: Models.Document| undefined; userId: string }) => {
   const likesList = post?.likes.map(( user: Models.Document) => user.$id)||0;
 
   const [likes, setLikes] = useState(likesList);
@@ -18,7 +18,7 @@ const PostStats = ({ post, userId }: { post: Models.Document; userId: string }) 
   const { mutate: deleteSavedPost } = useDeleteSavedPost();
 
   const {data: currentUser} = useGetCurrentUser();
-  const savedPostRecord = currentUser?.save.find((record: Models.Document) => record.post.$id === post.$id
+  const savedPostRecord = currentUser?.save.find((record: Models.Document) => record.post.$id === post?.$id
 );
 
   useEffect(() => {
@@ -56,8 +56,7 @@ const PostStats = ({ post, userId }: { post: Models.Document; userId: string }) 
 
   return (
     <div className="flex justify-between items-center z-20">
-
-
+      
       <div className="flex gap-2 mr-5">
         <img
         src={checkIsLiked(likes, userId) 
