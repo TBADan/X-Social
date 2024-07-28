@@ -10,7 +10,7 @@ import { useParams, Link } from 'react-router-dom';
 const PostDetails = () => {
   const { id } = useParams()
   const { user } = useUserContext();
-  const { data: post, isPending } = useGetPostById(id || '');
+  const { data: post, isPending } = useGetPostById(id||'');
 
 
   return (

@@ -4,9 +4,13 @@ import { checkIsLiked } from "@/lib/utils";
 import { Models } from "appwrite"
 import React, { useState, useEffect } from 'react';
 
+type PostStatsProps = {
+  post?: Models.Document;
+  userId: string;
+};
 
-
-const PostStats = ({ post, userId }: { post: Models.Document| undefined; userId: string }) => {
+ 
+const PostStats = ({ post, userId }: PostStatsProps )=> {
   const likesList = post?.likes.map(( user: Models.Document) => user.$id)||0;
 
   const [likes, setLikes] = useState(likesList);
@@ -37,7 +41,7 @@ const PostStats = ({ post, userId }: { post: Models.Document| undefined; userId:
       newLikes.push(userId);
     }
     setLikes(newLikes);
-    likePost({postId: post.$id, likesArray: newLikes })
+    likePost({postId: post?.$id || '', likesArray: newLikes })
   }
 ////saved post handle
   const handleSavePost = (
@@ -48,7 +52,7 @@ const PostStats = ({ post, userId }: { post: Models.Document| undefined; userId:
       setIsSaved(false);
       return deleteSavedPost(savedPostRecord.$id);
     }  {
-      savePost({ userId: userId, postId: post.$id})
+      savePost({ userId: userId, postId: post?.$id ||''})
       setIsSaved(true);
     }
   }
