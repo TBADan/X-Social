@@ -1,4 +1,4 @@
-import { ID, Query } from "appwrite";
+import { ID, ImageGravity, Query } from "appwrite";
 
 import { appwriteConfig, account, databases, avatars, storage } from "./config";
 import { INewPost, INewUser, IUpdatePost, IUpdateUser } from "@/types";
@@ -176,9 +176,9 @@ export function getFilePreview(fileId: string){
     const fileUrl = storage.getFilePreview(
       appwriteConfig.storageId,
       fileId,
-      2000,
-      2000,
-      "top",
+      500,
+      500,
+      ImageGravity.Center,
       100
     )
     if (!fileUrl) throw Error;
@@ -358,7 +358,7 @@ export async function deletePost (postId: string, imageId: string){
 }
 
 export async function getInfinitePost({pageParam}: { pageParam: number}) {
-  const queries: any[] = [Query.orderDesc('$updatedAt'), Query.limit(20)]
+  const queries: string[] = [Query.orderDesc('$updatedAt'), Query.limit(3)]
   if(pageParam) {
     queries.push(Query.cursorAfter(pageParam.toString()));
   }
@@ -371,7 +371,7 @@ export async function getInfinitePost({pageParam}: { pageParam: number}) {
     if(!posts) throw Error;
     return posts;
   } catch (error) {
-    console.log(error);
+    console.log("Error :: getInfinitePosts :: ");
   }
 }
 
@@ -390,7 +390,7 @@ export async function SearchPosts(searchTerm: string) {
 }
 
 export async function getUsers(limit?: number) {
-  const queries: any[] = [Query.orderDesc("$createdAt")];
+  const queries: string[] = [Query.orderDesc("$createdAt")];
 
   if (limit) {
     queries.push(Query.limit(limit));
