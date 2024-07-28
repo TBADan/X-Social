@@ -6,7 +6,7 @@ import React, { useState, useEffect } from 'react';
 
 
 
-const PostStats = ({ post, userId }: { post?: Models.Document; userId: string }) => {
+const PostStats = ({ post, userId }: { post: Models.Document; userId: string }) => {
   const likesList = post?.likes.map(( user: Models.Document) => user.$id)||0;
 
   const [likes, setLikes] = useState(likesList);
