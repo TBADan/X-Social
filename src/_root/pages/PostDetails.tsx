@@ -43,10 +43,6 @@ const PostDetails = () => {
                     <p className="subtle-semibold lg:small-regular ">
                       {multiFormatDateString(post?.$createdAt)}
                     </p>
-                    •
-                    <p className="subtle-semibold lg:small-regular">
-                      {post?.location}
-                    </p>
                   </div>
                 </div>
               </Link>
@@ -62,6 +58,9 @@ const PostDetails = () => {
                     height={24}
                   />
                 </Link>
+                <Button>
+                <img src="/assets/icons/Download.svg" width={23} height={23}/>
+            </Button>
 
                 <Button
                   variant="ghost"
@@ -88,6 +87,12 @@ const PostDetails = () => {
                       </li>
                   ))}
               </ul>
+              <div className="pt-4">
+                <Button asChild type="button" size="sm" className="shad-button_primary px-5 w-1/4 ">
+                  <Link to={post?.location}>See More</Link>
+                </Button>
+
+              </div>
               </div>
               <div className="w-full">
                 {isPending ? null : <PostStats post={post} userId={user.id}/>}
