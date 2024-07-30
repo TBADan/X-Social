@@ -15,7 +15,6 @@ import { Button } from "@/components/ui/button"
 import { useNavigate } from "react-router-dom";
 import { Input } from "@/components/ui/input"
 import { Textarea } from "../ui/textarea"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select"
 
 type PostFormProps = {
   post?: Models.Document;
@@ -124,23 +123,22 @@ const PostForm = ({ post, action }: PostFormProps) => {
           name="tags"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="shad-form_label">Add Tags (by selecting from the below)</FormLabel>
+              <FormLabel className="shad-form_label">
+                Add Tags (separated by comma " , ")
+              </FormLabel>
               <FormControl>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
-                  <SelectTrigger className="w-[180px]">
-                    <SelectValue placeholder="Content" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="Art">Art</SelectItem>
-                    <SelectItem value="Culture">Culture</SelectItem>
-                    <SelectItem value="Design">Design</SelectItem>
-                  </SelectContent>
-                </Select>
+                <Input
+                  placeholder="Art, Expression, Learn"
+                  type="text"
+                  className="shad-input"
+                  {...field}
+                />
               </FormControl>
               <FormMessage className="shad-form_message" />
             </FormItem>
           )}
         />
+        
 
         <div className="flex gap-4 items-center justify-end">
         <Button 
