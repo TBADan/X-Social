@@ -12,7 +12,7 @@ const AllUsers = () => {
   return (
     <div className="common-container">
       <div className="user-container">
-        <h3 className="h1-bold text-light-1">All Users</h3>
+        <h3 className="h1-bold text-light-1">Intergrations</h3>
       </div>
     {isUserLoading && !creators ? (
       <Loader/>

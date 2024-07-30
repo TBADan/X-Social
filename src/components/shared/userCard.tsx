@@ -1,5 +1,4 @@
 import { Models } from 'appwrite';
-import { Link } from 'react-router-dom';
 import { Button } from '../ui/button';
 
 type UserCardProp = {
@@ -8,20 +7,28 @@ type UserCardProp = {
 
 const UserCard = ( {user}: UserCardProp ) => {
   return (
-    <Link to={`/profile/${user.$id}`} className="user-card">
+
+    <div className="user-card">
+        <div>
+        <div className=" flex-start flex flex-row gap-3">
         <img
             src={user.imageUrl || "/assets/icons/profile-placeholder.svg"}
             alt="profile image"
             className="rounded-full w-14 h-14 object-cover"
         />
-        <div className="flex-center flex-col gap-1">
-            <p className="base-medium text-light-1 text-center line-clamp-1">{user.name}</p>
-            <p className="base-light text-light-3 text-center line-clamp-1">@{user.username}</p>
+        <div className="flex-col gap-3 items-start">
+            <p className="base-medium text-light-1 text-start line-clamp-1">{user.name}</p>
+            <p className="base-light text-light-3 text-start line-clamp-1">@{user.username}</p>
         </div>
-        <Button type="button" size="sm" className="shad-button_primary px-5">
-            See Profile
-        </Button>
-    </Link>
+
+        </div>
+
+        </div>
+        <div>
+            <Button className="shad-button_primary w-full">Toggle</Button>
+        </div>
+
+    </div>
 
   );
 };
